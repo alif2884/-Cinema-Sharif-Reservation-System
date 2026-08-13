@@ -35,7 +35,9 @@ A comprehensive, modular platform for managing and booking movie tickets online,
 Here is a visual overview of the different pages and features in the Cinema Sharif Reservation System:
 
 **Phone Number Entry Page**
+
 <img width="1920" height="911" alt="image" src="https://github.com/user-attachments/assets/b20ca712-6ad6-48ab-a574-c2b773d1072b" />
+
 
 **Login Page**
 <img width="1920" height="913" alt="image" src="https://github.com/user-attachments/assets/80714223-c830-4d88-9d18-5d4d4e184bee" />
