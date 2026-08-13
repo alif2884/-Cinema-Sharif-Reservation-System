@@ -75,27 +75,34 @@ git clone https://github.com/alif2884/-Cinema-Sharif-Reservation-System.git
 cd cinema-sharif
 ```
 
-2. Create and activate a virtual environment:
-
-Bash
+**2. Create and activate a virtual environment:**
+```bash
 python -m venv venv
+```
 # On Windows:
+```bash
 venv\Scripts\activate
+```
 # On macOS/Linux:
+```bash
 source venv/bin/activate
-3. Install dependencies:
+```
 
-Bash
+**3. Install dependencies:**
+```bash
 pip install -r requirements.txt
-4. Database Configuration:
+```
+
+**4. Database Configuration:**
 Create a PostgreSQL database and update your .env file or settings.py with your database credentials (NAME, USER, PASSWORD).
 
-5. Apply migrations:
-
-Bash
+**5. Apply migrations:**
+```bash
 python manage.py makemigrations
 python manage.py migrate
-6. Run the development server:
+```
 
-Bash
+**6. Run the development server:**
+```bash
 python manage.py runserver
+```
