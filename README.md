@@ -32,38 +32,53 @@ A comprehensive, modular platform for managing and booking movie tickets online,
 
 ## 📸 Screenshots
 
-*Note: The following images demonstrate the user and admin workflows.*
+Here is a visual overview of the different pages and features in the Cinema Sharif Reservation System:
 
-**Home Page & Movie Filtering**
-<img width="1920" height="911" alt="image" src="https://github.com/user-attachments/assets/7f159530-0683-4c8c-a067-d84c542ea2f0" />
-<img width="1920" height="913" alt="image" src="https://github.com/user-attachments/assets/a8f63e8b-484f-4521-8f09-2351263627a2" />
-<img width="1920" height="906" alt="image" src="https://github.com/user-attachments/assets/6c35c682-5742-4062-9dd3-95f792205dee" />
-<img width="1920" height="907" alt="image" src="https://github.com/user-attachments/assets/6f2d40a2-b953-47f6-8d40-97d4e769413d" />
-<img width="1920" height="907" alt="image" src="https://github.com/user-attachments/assets/994df615-7212-45ad-9da5-a85acb85171f" />
-<img width="1920" height="906" alt="image" src="https://github.com/user-attachments/assets/82feaf50-8453-423c-bd9e-4a8c441af50d" />
-<img width="1920" height="911" alt="image" src="https://github.com/user-attachments/assets/34291a49-e86d-4c6d-a565-607c201bf814" />
+**Phone Number Entry Page**
+<img width="1920" height="911" alt="image" src="https://github.com/user-attachments/assets/b20ca712-6ad6-48ab-a574-c2b773d1072b" />
 
-**Screening & Seat Selection**
-<img width="1920" height="904" alt="image" src="https://github.com/user-attachments/assets/67cbdef3-832c-459f-88a6-3edb11a53a94" />
-<img width="1920" height="899" alt="image" src="https://github.com/user-attachments/assets/cbaf88df-9db2-4258-abd8-14cb20c289b8" />
-<img width="1920" height="899" alt="image" src="https://github.com/user-attachments/assets/43e89ef9-cc05-457a-b75f-08a69a983027" />
-<img width="1920" height="906" alt="image" src="https://github.com/user-attachments/assets/91b939e5-dde9-4c25-824a-6ad8c5efaedf" />
+**Login Page**
+<img width="1920" height="913" alt="image" src="https://github.com/user-attachments/assets/80714223-c830-4d88-9d18-5d4d4e184bee" />
 
+**Registration Page**
+<img width="1920" height="906" alt="image" src="https://github.com/user-attachments/assets/32f8e6a2-a117-485c-8b4e-7b434ba92aee" />
 
-**Checkout, Payment Timer & Wallet**
-<img width="1899" height="909" alt="image" src="https://github.com/user-attachments/assets/5ec888c3-5c8e-41b7-a740-399a91548cc5" />
-<img width="1920" height="897" alt="image" src="https://github.com/user-attachments/assets/7133ee5a-4da3-4a09-8250-b965da24dd96" />
-<img width="1920" height="897" alt="image" src="https://github.com/user-attachments/assets/75184c50-6ac9-4646-b9db-4d4a1e04fbe5" />
+**Movies List Page**
+<img width="1920" height="907" alt="image" src="https://github.com/user-attachments/assets/02a1325f-24e6-4d72-9457-f5c30578949e" />
 
+**My Tickets (Reservations) Page**
+<img width="1920" height="907" alt="image" src="https://github.com/user-attachments/assets/4cccbdcc-d642-489a-9471-677c7f6de880" />
 
-**Admin Panel (Adding Cinemas & Editing Movies)**
-<img width="1920" height="904" alt="image" src="https://github.com/user-attachments/assets/ec910176-22e9-4f3e-a4ef-8612a5573c5f" />
-<img width="1920" height="897" alt="image" src="https://github.com/user-attachments/assets/18db8889-ba2c-499d-82b3-7264f1eb5d37" />
-<img width="1920" height="900" alt="image" src="https://github.com/user-attachments/assets/ed81bcc6-0254-4529-9f37-353fe4f5a4f5" />
-<img width="1920" height="904" alt="image" src="https://github.com/user-attachments/assets/c4ba47c8-fb6b-460c-bb56-c19d70f769cf" />
-<img width="1920" height="901" alt="image" src="https://github.com/user-attachments/assets/cc82ecda-6634-4dcb-8920-a98a0de2a7b2" />
-<img width="1920" height="891" alt="image" src="https://github.com/user-attachments/assets/20eeca85-1c56-4ae8-9ce8-d2aac893a8fe" />
+**Cinemas Page**
+<img width="1920" height="906" alt="image" src="https://github.com/user-attachments/assets/9e469494-d073-4e7e-b8f9-2dcf96be2b30" />
 
+**Movies in a Specific Cinema Page**
+<img width="1920" height="911" alt="image" src="https://github.com/user-attachments/assets/6f84c782-d3bb-4431-9af7-750ac72d03ee" />
+
+**Movie Details & Screening Selection Page**
+<img width="1920" height="904" alt="image" src="https://github.com/user-attachments/assets/3a56b9b3-fee1-4609-9733-dfbdfc38be79" />
+<img width="1920" height="899" alt="image" src="https://github.com/user-attachments/assets/9b3d3df9-af5b-45a0-a76c-51906ee27685" />
+
+**Cinemas & Screenings for a Specific Movie**
+<img width="1920" height="899" alt="image" src="https://github.com/user-attachments/assets/2c9eac50-88d3-4765-b366-6ffcf79c00dc" />
+
+**Seat Selection Page**
+<img width="1920" height="906" alt="image" src="https://github.com/user-attachments/assets/50ce59aa-bfee-45c1-9a3b-191181d5b15e" />
+
+**Reservation Confirmation & Payment Page**
+<img width="1899" height="909" alt="image" src="https://github.com/user-attachments/assets/90dc688f-3354-468e-995e-6ddedb9a76f5" />
+<img width="1920" height="897" alt="image" src="https://github.com/user-attachments/assets/886b2f95-d511-4f9a-8901-bb67136bdbe4" />
+
+**Reservation Cancellation Page**
+<img width="1920" height="897" alt="image" src="https://github.com/user-attachments/assets/e79d5b2c-8e1d-4f7b-8f88-038ddcff903a" />
+
+**Admin Pages**
+<img width="1920" height="904" alt="image" src="https://github.com/user-attachments/assets/28038646-8351-4c4f-a805-4b42bb9b8816" />
+<img width="1920" height="897" alt="image" src="https://github.com/user-attachments/assets/0d229e2a-8e8b-4ba1-9756-b33062ef366d" />
+<img width="1920" height="900" alt="image" src="https://github.com/user-attachments/assets/df585259-c44b-4165-b678-220febd10932" />
+<img width="1920" height="904" alt="image" src="https://github.com/user-attachments/assets/fbdea473-43b7-4792-9dca-720f06e2117b" />
+<img width="1920" height="901" alt="image" src="https://github.com/user-attachments/assets/b93a4bec-ed39-4068-98c4-a89c2d1323a8" />
+<img width="1920" height="891" alt="image" src="https://github.com/user-attachments/assets/2106dd71-e753-44ee-8678-a19843874c7e" />
 
 ## 🚀 Installation & Setup
 
