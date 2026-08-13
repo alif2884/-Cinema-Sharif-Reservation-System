@@ -35,17 +35,35 @@ A comprehensive, modular platform for managing and booking movie tickets online,
 *Note: The following images demonstrate the user and admin workflows.*
 
 **Home Page & Movie Filtering**
-![Home Page](image_86e26b.png)
+<img width="1920" height="911" alt="image" src="https://github.com/user-attachments/assets/7f159530-0683-4c8c-a067-d84c542ea2f0" />
+<img width="1920" height="913" alt="image" src="https://github.com/user-attachments/assets/a8f63e8b-484f-4521-8f09-2351263627a2" />
+<img width="1920" height="906" alt="image" src="https://github.com/user-attachments/assets/6c35c682-5742-4062-9dd3-95f792205dee" />
+<img width="1920" height="907" alt="image" src="https://github.com/user-attachments/assets/6f2d40a2-b953-47f6-8d40-97d4e769413d" />
+<img width="1920" height="907" alt="image" src="https://github.com/user-attachments/assets/994df615-7212-45ad-9da5-a85acb85171f" />
+<img width="1920" height="906" alt="image" src="https://github.com/user-attachments/assets/82feaf50-8453-423c-bd9e-4a8c441af50d" />
+<img width="1920" height="911" alt="image" src="https://github.com/user-attachments/assets/34291a49-e86d-4c6d-a565-607c201bf814" />
 
 **Screening & Seat Selection**
-![Seat Selection](image_86e245.png)
+<img width="1920" height="904" alt="image" src="https://github.com/user-attachments/assets/67cbdef3-832c-459f-88a6-3edb11a53a94" />
+<img width="1920" height="899" alt="image" src="https://github.com/user-attachments/assets/cbaf88df-9db2-4258-abd8-14cb20c289b8" />
+<img width="1920" height="899" alt="image" src="https://github.com/user-attachments/assets/43e89ef9-cc05-457a-b75f-08a69a983027" />
+<img width="1920" height="906" alt="image" src="https://github.com/user-attachments/assets/91b939e5-dde9-4c25-824a-6ad8c5efaedf" />
+
 
 **Checkout, Payment Timer & Wallet**
-![Checkout](image_86e22b.png)
+<img width="1899" height="909" alt="image" src="https://github.com/user-attachments/assets/5ec888c3-5c8e-41b7-a740-399a91548cc5" />
+<img width="1920" height="897" alt="image" src="https://github.com/user-attachments/assets/7133ee5a-4da3-4a09-8250-b965da24dd96" />
+<img width="1920" height="897" alt="image" src="https://github.com/user-attachments/assets/75184c50-6ac9-4646-b9db-4d4a1e04fbe5" />
+
 
 **Admin Panel (Adding Cinemas & Editing Movies)**
-![Admin Panel 1](image_86e20f.png)
-![Admin Panel 2](image_86e20a.png)
+<img width="1920" height="904" alt="image" src="https://github.com/user-attachments/assets/ec910176-22e9-4f3e-a4ef-8612a5573c5f" />
+<img width="1920" height="897" alt="image" src="https://github.com/user-attachments/assets/18db8889-ba2c-499d-82b3-7264f1eb5d37" />
+<img width="1920" height="900" alt="image" src="https://github.com/user-attachments/assets/ed81bcc6-0254-4529-9f37-353fe4f5a4f5" />
+<img width="1920" height="904" alt="image" src="https://github.com/user-attachments/assets/c4ba47c8-fb6b-460c-bb56-c19d70f769cf" />
+<img width="1920" height="901" alt="image" src="https://github.com/user-attachments/assets/cc82ecda-6634-4dcb-8920-a98a0de2a7b2" />
+<img width="1920" height="891" alt="image" src="https://github.com/user-attachments/assets/20eeca85-1c56-4ae8-9ce8-d2aac893a8fe" />
+
 
 ## 🚀 Installation & Setup
 
