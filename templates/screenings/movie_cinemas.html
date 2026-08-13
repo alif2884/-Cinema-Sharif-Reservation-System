@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block title %}انتخاب سینما برای {{ movie.title }}{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="text-center mb-5">
+        <h2 class="fw-bold text-primary">اکران‌های فیلم «{{ movie.title }}»</h2>
+        <p class="text-muted">لطفاً سینمای مورد نظر خود را انتخاب کنید</p>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            {% if cinemas %}
+                <div class="list-group shadow-sm">
+                    {% for cinema in cinemas %}
+                    <a href="{% url 'screening_list' movie.pk %}?cinema={{ cinema.name }}" 
+                       class="list-group-item list-group-item-action p-4 d-flex justify-content-between align-items-center hover-effect">
+                        
+                        <div>
+                            <h5 class="mb-1 fw-bold">
+                                <i class="bi bi-geo-alt-fill text-danger"></i> سینما {{ cinema.name }}
+                            </h5>
+                            <small class="text-muted">{{ cinema.city }} - {{ cinema.address|default:"آدرس ثبت نشده" }}</small>
+                        </div>
+                        
+                        <span class="btn btn-outline-primary rounded-pill">
+                            مشاهده سانس‌ها <i class="bi bi-chevron-left"></i>
+                        </span>
+                    </a>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <div class="alert alert-warning text-center">
+                    متاسفانه در حال حاضر هیچ سینمایی این فیلم را اکران نمی‌کند.
+                </div>
+            {% endif %}
+
+            <div class="mt-4">
+                <a href="{% url 'movie_list' %}" class="btn btn-secondary">
+                    <i class="bi bi-arrow-right"></i> بازگشت به لیست فیلم‌ها
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .hover-effect:hover {
+        background-color: #f8f9fa;
+        transform: translateX(-5px);
+        transition: all 0.2s ease;
+    }
+</style>
+{% endblock %}

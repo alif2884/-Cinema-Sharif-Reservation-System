@@ -1,0 +1,106 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}{{ movie.title }}{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row shadow-sm bg-white rounded p-4 border">
+        
+        <div class="col-md-4 mb-3">
+            {% if movie.poster_image %}
+                <img src="{{ movie.poster_image.url }}" class="img-fluid rounded w-100" alt="{{ movie.title }}" style="max-height: 500px; object-fit: cover;">
+            {% else %}
+                <div class="bg-light d-flex align-items-center justify-content-center rounded" style="height: 400px;">
+                    <i class="bi bi-image text-muted display-1"></i>
+                </div>
+            {% endif %}
+        </div>
+
+        
+        <div class="col-md-8">
+            <h1 class="fw-bold mb-3">{{ movie.title }}</h1>
+            
+            <div class="mb-4">
+                <span class="badge bg-warning text-dark fs-6 ms-1">{{ movie.genre }}</span>
+                <span class="badge bg-secondary fs-6 ms-1">{{ movie.duration }}</span>
+                <span class="badge bg-light text-dark border fs-6">{{ movie.release_date|date:"Y/m/d" }}</span>
+            </div>
+
+            <p class="fs-5"><i class="bi bi-person-video2 text-primary"></i> <strong>کارگردان:</strong> {{ movie.director }}</p>
+            <p class="fs-5"><i class="bi bi-people-fill text-primary"></i> <strong>بازیگران:</strong> {{ movie.actors }}</p>
+            
+            <hr>
+            <h5 class="fw-bold text-muted">خلاصه داستان:</h5>
+            <p class="text-justify lh-lg">{{ movie.description }}</p>
+        </div>
+    </div>
+
+    
+    <div class="row mt-5">
+        <div class="col-12">
+            <h3 class="border-bottom pb-3 mb-4">
+                <i class="bi bi-calendar-check text-success"></i> سانس‌های اکران
+            </h3>
+
+            {% if screenings %}
+                <div class="table-responsive">
+                    <table class="table table-hover align-middle text-center bg-white shadow-sm rounded">
+                        <thead class="table-light">
+                            <tr>
+                                <th>سینما</th>
+                                <th>زمان شروع</th>
+                                <th>قیمت بلیت</th>
+                                <th>ظرفیت باقی‌مانده</th>
+                                <th>عملیات</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for screening in screenings %}
+                            <tr>
+                                <td class="fw-bold">{{ screening.cinema.name }}</td>
+                                <td>
+                                    <span class="d-block fw-bold">{{ screening.start_time|date:"l d F" }}</span>
+                                    <span class="small text-muted">{{ screening.start_time|date:"H:i" }}</span>
+                                </td>
+                                <td>{{ screening.price }} تومان</td>
+                                
+                               
+                                <td>
+                                    {% if screening.capacity > 0 %}
+                                        <span class="badge bg-success rounded-pill px-3">{{ screening.capacity }} صندلی</span>
+                                    {% else %}
+                                        <span class="badge bg-danger rounded-pill px-3">تکمیل</span>
+                                    {% endif %}
+                                </td>
+
+                                
+                                <td>
+                                    {% if screening.capacity > 0 %}
+                                        
+                                        <form action="{% url 'reserve_seat' screening.id %}" method="post">
+                                            {% csrf_token %}
+                                            <button type="submit" class="btn btn-primary btn-sm px-4">
+                                                رزرو بلیت
+                                            </button>
+                                        </form>
+                                    {% else %}
+                                        <button class="btn btn-secondary btn-sm px-4" disabled>
+                                            تکمیل ظرفیت
+                                        </button>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            {% else %}
+                <div class="alert alert-info text-center">
+                    در حال حاضر هیچ سانسی برای این فیلم تعریف نشده است.
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends 'base.html' %} 
+
+{% block content %}
+    <h2>رزرو بلیط جدید</h2>
+    
+    <h3>فیلم‌های موجود</h3>
+    <ul>
+        {% for movie in movies %}
+            <li><a href="{% url 'movie_detail' movie.pk %}">{{ movie.title }}</a></li>
+        {% endfor %}
+    </ul>
+
+    <hr>
+
+    <h3>فرم رزرو</h3>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">تایید و رزرو</button>
+    </form>
+{% endblock %}

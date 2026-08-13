@@ -1,0 +1,126 @@
+{% extends "base.html" %}
+
+{% block title %}
+    {% if temporary %}تایید و پرداخت{% else %}رزرو موفق{% endif %}
+{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="card shadow mx-auto" style="max-width: 600px;">
+        
+        <div class="card-header {% if temporary %}bg-warning{% else %}bg-success text-white{% endif %} text-center py-3">
+            <h4 class="m-0">
+                {% if temporary %}
+                    <i class="bi bi-hourglass-split"></i> تایید نهایی و پرداخت
+                {% else %}
+                    <i class="bi bi-check-circle-fill"></i> رزرو نهایی شد
+                {% endif %}
+            </h4>
+        </div>
+
+        <div class="card-body p-4">
+            
+            {% if temporary %}
+            <div class="alert alert-danger text-center mb-4">
+                <span id="timer-text" class="fw-bold fs-5">زمان باقی‌مانده: در حال محاسبه...</span>
+            </div>
+            {% endif %}
+
+            <ul class="list-group list-group-flush mb-4">
+                <li class="list-group-item d-flex justify-content-between">
+                    <span>🎬 فیلم:</span> <strong>{{ reservation.screening.movie.title }}</strong>
+                </li>
+                <li class="list-group-item d-flex justify-content-between">
+                    <span>🏛 سینما:</span> <span>{{ reservation.screening.cinema.name }}</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between">
+                    <span>⏰ زمان:</span> <span dir="ltr">{{ reservation.screening.start_time|date:"Y/m/d H:i" }}</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between">
+                    <span>🪑 صندلی:</span> 
+                    <span class="badge bg-secondary">ردیف {{ reservation.seat.row }} - صندلی {{ reservation.seat.number }}</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between bg-light">
+                    <span class="fw-bold">💰 مبلغ کل:</span> 
+                    <span class="fw-bold text-success fs-5">{{ price }} تومان</span>
+                </li>
+            </ul>
+
+            <div class="d-grid gap-2">
+                {% if temporary %}
+                    
+                    {% if wallet_balance >= price %}
+                        <div class="alert alert-success text-center py-2 mb-2">
+                            <i class="bi bi-check-lg"></i> موجودی کیف پول: {{ wallet_balance }} تومان (کافی)
+                        </div>
+                        
+                        <a href="{% url 'confirm_reservation_payment' reservation.tracking_code %}" class="btn btn-success btn-lg shadow">
+                            <i class="bi bi-credit-card-2-front"></i> کسر از کیف پول و صدور بلیط
+                        </a>
+
+                    {% else %}
+                        <div class="alert alert-danger text-center py-2 mb-2">
+                            <i class="bi bi-exclamation-triangle"></i> موجودی ناکافی! (موجودی فعلی: {{ wallet_balance }} تومان)
+                            <br>
+                            <small>کسری موجودی: {{ shortage }} تومان</small>
+
+                        </div>
+
+                        <div class="card bg-light border-0 mb-3 p-3">
+                            <p class="mb-2 text-muted small">افزایش اعتبار سریع:</p>
+                            <form method="post" class="row g-2">
+                                {% csrf_token %}
+                                <div class="col-8">
+                                    <input type="number" name="amount" class="form-control" 
+                                           placeholder="مبلغ شارژ (تومان)" 
+                                           value="{{ shortage }}" required min="1000">
+                                </div>
+                                <div class="col-4">
+                                    <button type="submit" name="charge_wallet" class="btn btn-primary w-100">
+                                        <i class="bi bi-plus"></i> شارژ
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+
+                        <button class="btn btn-secondary" disabled>برای پرداخت، کیف پول را شارژ کنید</button>
+                    {% endif %}
+                    
+                    <a href="{% url 'cancel_reservation_view' reservation.tracking_code %}" class="btn btn-outline-danger mt-3">
+                        <i class="bi bi-x"></i> انصراف و لغو
+                    </a>
+                
+                {% else %}
+                    <div class="alert alert-info text-center">
+                        کد رهگیری: <span class="font-monospace fw-bold">{{ reservation.tracking_code }}</span>
+                    </div>
+                    <button onclick="window.print()" class="btn btn-outline-dark">
+                        <i class="bi bi-printer"></i> چاپ بلیط
+                    </button>
+                    <a href="{% url 'home' %}" class="btn btn-link">بازگشت به خانه</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% if temporary %}
+<script>
+    let timeLeft = {{ time_left }};
+    const timerText = document.getElementById('timer-text');
+    const countdown = setInterval(() => {
+        if (timeLeft <= 0) {
+            clearInterval(countdown);
+            timerText.innerText = "زمان به پایان رسید!";
+            alert("زمان شما برای پرداخت تمام شد.");
+            window.location.href = "{% url 'home' %}";
+        } else {
+            let m = Math.floor(timeLeft / 60);
+            let s = timeLeft % 60;
+            timerText.innerText = `زمان باقی‌مانده: ${m}:${s < 10 ? '0'+s : s}`;
+            timeLeft--;
+        }
+    }, 1000);
+</script>
+{% endif %}
+{% endblock %}

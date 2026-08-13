@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}انتخاب صندلی{% endblock %}
+
+{% block content %}
+<div class="container text-center mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <h2 class="mb-2">{{ screening.movie.title }}</h2>
+            <p class="text-muted">
+                <i class="bi bi-geo-alt"></i> {{ screening.cinema.name }} | 
+                <i class="bi bi-clock"></i> {{ screening.start_time|date:"H:i" }}
+            </p>
+            
+            <div class="mb-4">
+                <span class="badge bg-secondary p-2 mx-1">ظرفیت کل: {{ screening.total_capacity }}</span>
+                {% if screening.remaining_seats > 0 %}
+                    <span class="badge bg-success p-2 mx-1">ظرفیت باقی‌مانده: {{ screening.remaining_seats }}</span>
+                {% else %}
+                    <span class="badge bg-danger p-2 mx-1">تکمیل ظرفیت</span>
+                {% endif %}
+            </div>
+
+            <div class="card bg-secondary text-white mb-4 shadow-sm">
+                <div class="card-body py-1">پرده نمایش</div>
+            </div>
+
+            <form method="post" action="{% url 'reserve_seat' screening.pk %}">
+                {% csrf_token %}
+                
+                <div class="d-flex justify-content-center mb-4">
+                    <div class="bg-light p-4 rounded border shadow-sm" style="max-width: 100%; overflow-x: auto;">
+                        <div style="display: grid; grid-template-columns: repeat(10, 1fr); gap: 10px;">
+                            {% for seat in seat_data %}
+                                {% if seat.is_reserved %}
+                                    <button type="button" class="btn btn-danger btn-sm disabled" title="رزرو شده" style="width: 40px; height: 40px;">
+                                        {{ seat.seat_number }}
+                                    </button>
+                                {% else %}
+                                    <div>
+                                        <input type="radio" class="btn-check" name="seat_id" id="seat_{{ seat.pk }}" value="{{ seat.pk }}" autocomplete="off" required>
+                                        <label class="btn btn-outline-success btn-sm" for="seat_{{ seat.pk }}" style="width: 40px; height: 40px; padding-top: 8px;">
+                                            {{ seat.seat_number }}
+                                        </label>
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="d-flex justify-content-center gap-3 mb-4 text-small">
+                    <div><span class="badge bg-outline-success border text-success"> </span> آزاد</div>
+                    <div><span class="badge bg-danger"> </span> رزرو شده</div>
+                    <div><span class="badge bg-success">✔</span> انتخاب شما</div>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-lg px-5 shadow">
+                    تایید و ادامه
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

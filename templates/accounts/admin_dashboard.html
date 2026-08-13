@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block title %}پنل مدیریت{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="mb-4 fw-bold text-dark">🛠 پنل مدیریت سینما</h2>
+    <div class="row g-4">
+
+        <div class="col-md-4">
+            <div class="card h-100 shadow-sm border-0 bg-light text-center p-4">
+                <i class="bi bi-building display-4 text-primary mb-3"></i>
+                <h4 class="card-title">مدیریت سینماها</h4>
+                <p class="text-muted">تعریف، ویرایش و حذف سالن‌های سینما</p>
+                <a href="{% url 'cinema_list' %}" class="btn btn-primary w-100">ورود به بخش</a>
+            </div>
+        </div>
+        
+        <div class="col-md-4">
+            <div class="card h-100 shadow-sm border-0 bg-light text-center p-4">
+                <i class="bi bi-film display-4 text-danger mb-3"></i>
+                <h4 class="card-title">مدیریت فیلم‌ها</h4>
+                <p class="text-muted">افزودن فیلم جدید و ویرایش اطلاعات</p>
+                <a href="{% url 'movie_admin_list' %}" class="btn btn-danger w-100">ورود به بخش</a>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card h-100 shadow-sm border-0 bg-light text-center p-4">
+                <i class="bi bi-clock-history display-4 text-success mb-3"></i>
+                <h4 class="card-title">برنامه اکران</h4>
+                <p class="text-muted">تخصیص فیلم به سینما و تعیین زمان</p>
+                <a href="/admin/screenings/screening/" class="btn btn-success w-100">ورود به بخش</a> 
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

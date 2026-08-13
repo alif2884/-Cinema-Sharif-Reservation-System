@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% block title %}مدیریت فیلم‌ها{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2>🛠 مدیریت فیلم‌ها</h2>
+        <a href="{% url 'movie_create' %}" class="btn btn-success shadow-sm">
+            <i class="bi bi-plus-lg"></i> افزودن فیلم جدید
+        </a>
+    </div>
+
+    <div class="card shadow-sm">
+        <div class="card-body p-0">
+            <div class="table-responsive">
+                <table class="table table-hover align-middle mb-0">
+                    <thead class="table-light">
+                        <tr>
+                            <th style="width: 100px;">پوستر</th>
+                            <th>عنوان فیلم</th>
+                            <th>تاریخ اکران</th>
+                            <th class="text-center">مدت زمان</th>
+                            <th class="text-center">عملیات</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for movie in movies %}
+                        <tr>
+                            <td class="py-2 px-3">
+                                {% if movie.poster_image %}
+                                    <img src="{{ movie.poster_image.url }}" class="rounded shadow-sm" width="50" height="70" style="object-fit: cover;">
+                                {% else %}
+                                    <div class="bg-light rounded d-flex align-items-center justify-content-center border" style="width: 50px; height: 70px;">
+                                        <i class="bi bi-image text-muted"></i>
+                                    </div>
+                                {% endif %}
+                            </td>
+                            <td class="fw-bold">{{ movie.title }}</td>
+                            <td>{{ movie.release_date|default:"-" }}</td>
+                            <td class="text-center">{{ movie.duration }} دقیقه</td>
+                            <td class="text-center">
+                                <div class="btn-group" role="group">
+                                    <a href="{% url 'movie_update' movie.pk %}" class="btn btn-sm btn-outline-warning" title="ویرایش">
+                                        <i class="bi bi-pencil"></i> ویرایش
+                                    </a>
+                                    <a href="{% url 'movie_delete' movie.pk %}" class="btn btn-sm btn-outline-danger" title="حذف">
+                                        <i class="bi bi-trash"></i> حذف
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                        {% empty %}
+                        <tr>
+                            <td colspan="5" class="text-center py-5 text-muted">
+                                هنوز هیچ فیلمی اضافه نشده است.
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

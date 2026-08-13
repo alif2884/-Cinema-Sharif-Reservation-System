@@ -1,0 +1,107 @@
+{% extends "base.html" %}
+
+{% block title %}لیست سینماها{% endblock %}
+
+{% block content %}
+<div class="row mb-4 align-items-center">
+    <div class="col-md-6">
+        <h2 class="fw-bold text-dark">
+            <i class="bi bi-building text-primary"></i> لیست سینماها
+        </h2>
+    </div>
+    <div class="col-md-6 text-end">
+        {% if user.is_staff %}
+            <a href="{% url 'cinema_create' %}" class="btn btn-success shadow-sm">
+                <i class="bi bi-plus-lg"></i> افزودن سینما
+            </a>
+        {% endif %}
+    </div>
+</div>
+
+<div class="row mb-4">
+    <div class="col-md-12">
+        <form method="get" action="" class="card p-3 border-0 shadow-sm bg-light">
+            <div class="input-group">
+                <span class="input-group-text bg-white border-end-0"><i class="bi bi-search text-muted"></i></span>
+                <input type="text" name="q" class="form-control border-start-0" 
+                       placeholder="جستجوی نام سینما..." 
+                       value="{{ request.GET.q|default:'' }}">
+                <button class="btn btn-primary" type="submit">جستجو</button>
+                {% if request.GET.q %}
+                    <a href="{% url 'cinema_list' %}" class="btn btn-outline-secondary">پاک کردن</a>
+                {% endif %}
+            </div>
+        </form>
+    </div>
+</div>
+
+{% if cinemas %}
+<div class="row g-4">
+    {% for cinema in cinemas %}
+    <div class="col-md-6 col-lg-4">
+        <div class="card h-100 shadow-sm border-0 hover-shadow transition-card">
+            <div class="card-body">
+                <div class="d-flex justify-content-between align-items-start mb-3">
+                    <h5 class="card-title fw-bold text-primary">{{ cinema.name }}</h5>
+                    <span class="badge bg-light text-dark border">
+                        <i class="bi bi-people"></i> {{ cinema.capacity }} نفر
+                    </span>
+                </div>
+                
+                <p class="card-text text-muted small">
+                    <i class="bi bi-geo-alt-fill text-danger"></i> {{ cinema.address }}
+                </p>
+
+                <div class="d-flex justify-content-between align-items-center mt-3 bg-light p-2 rounded">
+                    <small class="text-muted">
+                        <i class="bi bi-film"></i> سانس‌های فعال:
+                    </small>
+                    <span class="badge bg-primary rounded-pill">{{ cinema.screening_count }}</span>
+                </div>
+
+                <div class="d-grid gap-2 mt-3">
+                    <a href="{% url 'cinema_movies' cinema.id %}" class="btn btn-outline-primary">
+                        <i class="bi bi-eye"></i> مشاهده برنامه اکران
+                    </a>
+                </div>
+            </div>
+            
+            {% if user.is_staff %}
+            <div class="card-footer bg-white border-top-0 d-flex justify-content-between gap-2 pb-3 pt-0">
+                <small class="text-muted align-self-center">مدیریت:</small>
+                <div>
+                    <a href="{% url 'cinema_update' cinema.pk %}" class="btn btn-sm btn-outline-warning" title="ویرایش">
+                        <i class="bi bi-pencil"></i>
+                    </a>
+                    <a href="{% url 'cinema_delete' cinema.pk %}" class="btn btn-sm btn-outline-danger" title="حذف">
+                        <i class="bi bi-trash"></i>
+                    </a>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% else %}
+<div class="alert alert-info text-center py-5 shadow-sm mt-3">
+    <i class="bi bi-emoji-frown display-4 mb-3 d-block text-secondary"></i>
+    <h4>
+        {% if request.GET.q %}
+            سینمایی با نام "{{ request.GET.q }}" پیدا نشد!
+        {% else %}
+            هیچ سینمایی در سیستم ثبت نشده است.
+        {% endif %}
+    </h4>
+    {% if user.is_staff and not request.GET.q %}
+    <p>شما می‌توانید اولین سینما را اضافه کنید.</p>
+    <a href="{% url 'cinema_create' %}" class="btn btn-primary mt-2">افزودن سینما</a>
+    {% endif %}
+</div>
+{% endif %}
+
+<style>
+    .transition-card { transition: transform 0.2s, box-shadow 0.2s; }
+    .transition-card:hover { transform: translateY(-5px); box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important; }
+</style>
+{% endblock %}

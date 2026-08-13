@@ -1,0 +1,159 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}سانس‌های {{ movie.title }}{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    
+    <div class="card mb-5 shadow-sm border-0 overflow-hidden">
+        <div class="row g-0">
+            <div class="col-md-3 bg-dark d-flex align-items-center justify-content-center">
+                {% if movie.poster_image %}
+                    <img src="{{ movie.poster_image.url }}" class="img-fluid rounded-start w-100" style="object-fit: cover; max-height: 400px;" alt="{{ movie.title }}">
+                {% else %}
+                    <div class="text-white p-5 text-center">بدون تصویر</div>
+                {% endif %}
+            </div>
+            
+            <div class="col-md-9">
+                <div class="card-body p-4">
+                    <div class="d-flex justify-content-between align-items-start">
+                        <h1 class="card-title fw-bold text-primary mb-3">{{ movie.title }}</h1>
+                        <span class="badge bg-warning text-dark fs-6">{{ movie.genre }}</span>
+                    </div>
+                    
+                    <div class="row mb-3 text-muted">
+                        <div class="col-md-6">
+                            <p><i class="bi bi-person-video2"></i> <strong>کارگردان:</strong> {{ movie.director }}</p>
+                            <p><i class="bi bi-clock"></i> <strong>مدت زمان:</strong> {{ movie.duration }}</p>
+                        </div>
+                        <div class="col-md-6">
+                            <p><i class="bi bi-people"></i> <strong>بازیگران:</strong> {{ movie.actors }}</p>
+                            <p><i class="bi bi-calendar3"></i> <strong>سال انتشار:</strong> {{ movie.release_date|date:"Y" }}</p>
+                        </div>
+                    </div>
+
+                    <div class="mb-4">
+                        <h5 class="fw-bold border-bottom pb-2">خلاصه داستان</h5>
+                        <p class="card-text text-justify text-secondary">{{ movie.description|linebreaks }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="d-flex align-items-center justify-content-between mb-4">
+        {% if current_cinema %}
+            <div>
+                <h3 class="fw-bold"><i class="bi bi-ticket-perforated-fill text-danger"></i> سانس‌های موجود</h3>
+                <span class="text-muted">در سینما {{ current_cinema.name }}</span>
+            </div>
+        {% else %}
+            <h3 class="fw-bold"><i class="bi bi-ticket-perforated-fill text-danger"></i> لیست کلیه سانس‌ها</h3>
+        {% endif %}
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-12">
+            {% if screenings %}
+                <div class="card shadow-sm border-0">
+                    <div class="list-group list-group-flush">
+                        {% for screening in screenings %}
+                        <div class="list-group-item p-4 hover-effect">
+                            <div class="row align-items-center">
+                                
+                                <div class="col-md-3 mb-3 mb-md-0">
+                                    <h5 class="mb-1 fw-bold text-dark">
+                                        <i class="bi bi-geo-alt-fill text-danger"></i> {{ screening.cinema.name }}
+                                    </h5>
+                                    <small class="text-muted">{{ screening.cinema.city }}</small>
+                                </div>
+
+                                <div class="col-md-4 mb-3 mb-md-0 text-center border-start border-end">
+                                    <div class="d-flex justify-content-center align-items-center gap-2">
+                                        <span class="badge bg-light text-dark border px-3 py-2">
+                                            <i class="bi bi-calendar-event"></i> 
+                                            {{ screening.start_time|date:"Y/m/d" }}
+                                        </span>
+                                        <span class="badge bg-light text-dark border px-3 py-2">
+                                            <i class="bi bi-clock"></i> 
+                                            {{ screening.start_time|time:"H:i" }}
+                                        </span>
+                                    </div>
+                                    <div class="mt-2 fw-bold text-success">
+                                        {{ screening.price }} تومان
+                                    </div>
+                                </div>
+
+                                <div class="col-md-5 text-end">
+                                    <div class="d-flex align-items-center justify-content-end gap-3">
+                                        <div class="text-center">
+                                            {% if screening.remaining_seats > 0 %}
+                                                <span class="d-block fw-bold text-success">{{ screening.remaining_seats }}</span>
+                                                <small class="text-muted" style="font-size: 0.75rem;">صندلی خالی</small>
+                                            {% else %}
+                                                <span class="badge bg-danger">تکمیل ظرفیت</span>
+                                            {% endif %}
+                                        </div>
+
+                                        {% if screening.remaining_seats > 0 %}
+                                            <a href="{% url 'seat_selection' screening.pk %}" class="btn btn-primary px-4 py-2">
+                                                انتخاب صندلی <i class="bi bi-chevron-left ms-1"></i>
+                                            </a>
+                                        {% else %}
+                                            <button class="btn btn-secondary px-4 py-2" disabled>
+                                                بسته شد
+                                            </button>
+                                        {% endif %}
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% else %}
+                <div class="alert alert-warning text-center py-5 shadow-sm">
+                    <h4><i class="bi bi-exclamation-circle"></i> سانسی یافت نشد!</h4>
+                    <p>متاسفانه در حال حاضر سانسی برای این مشخصات تعریف نشده است.</p>
+                </div>
+            {% endif %}
+
+            <div class="mt-4 d-flex justify-content-between">
+                <div>
+                    {% if current_cinema %}
+                        <a href="{% url 'cinema_movies' current_cinema.pk %}" class="btn btn-outline-secondary">
+                            <i class="bi bi-arrow-right"></i> بازگشت به فیلم‌های سینما {{ current_cinema.name }}
+                        </a>
+                    {% else %}
+                        <a href="{% url 'movie_list' %}" class="btn btn-outline-secondary">
+                            <i class="bi bi-arrow-right"></i> بازگشت به لیست فیلم‌ها
+                        </a>
+                    {% endif %}
+                </div>
+                
+                {% if current_cinema %}
+                <div>
+                    <a href="{% url 'screening_list' movie.pk %}" class="btn btn-link text-decoration-none">
+                        مشاهده سانس‌های این فیلم در سایر سینماها
+                    </a>
+                </div>
+                {% endif %}
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<style>
+    .hover-effect:hover {
+        background-color: #f8f9fa;
+        transition: background-color 0.2s;
+    }
+    .text-justify {
+        text-align: justify;
+    }
+</style>
+{% endblock %}

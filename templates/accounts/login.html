@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block title %}ورود به حساب{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center mt-5">
+    <div class="col-md-5 col-lg-4">
+        <div class="card shadow-lg border-0 rounded-3">
+            <div class="card-header bg-primary text-white text-center py-3">
+                <h4 class="mb-0 fw-bold">🔐 ورود به سینما</h4>
+            </div>
+            <div class="card-body p-4">
+                <form method="post">
+                    {% csrf_token %}
+                    
+                    {% if form.non_field_errors %}
+                        <div class="alert alert-danger">{{ form.non_field_errors }}</div>
+                    {% endif %}
+
+                    {% for field in form %}
+                    <div class="mb-3">
+                        <label class="form-label text-muted small">{{ field.label }}</label>
+                        {{ field }} 
+                        {% if field.errors %}
+                            <div class="text-danger small mt-1">{{ field.errors.0 }}</div>
+                        {% endif %}
+                    </div>
+                    {% endfor %}
+
+                    <div class="d-grid mt-4">
+                        <button type="submit" class="btn btn-primary py-2 fw-bold">ورود</button>
+                    </div>
+                </form>
+            </div>
+            <div class="card-footer text-center bg-light py-3">
+                <small class="text-muted">حساب کاربری ندارید؟ <a href="{% url 'signup' %}" class="text-decoration-none fw-bold">ثبت‌نام کنید</a></small>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
