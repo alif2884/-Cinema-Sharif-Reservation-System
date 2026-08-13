@@ -40,47 +40,71 @@ Here is a visual overview of the different pages and features in the Cinema Shar
 
 
 **Login Page**
+
 <img width="1920" height="913" alt="image" src="https://github.com/user-attachments/assets/80714223-c830-4d88-9d18-5d4d4e184bee" />
 
+
 **Registration Page**
+
 <img width="1920" height="906" alt="image" src="https://github.com/user-attachments/assets/32f8e6a2-a117-485c-8b4e-7b434ba92aee" />
 
+
 **Movies List Page**
+
 <img width="1920" height="907" alt="image" src="https://github.com/user-attachments/assets/02a1325f-24e6-4d72-9457-f5c30578949e" />
 
+
 **My Tickets (Reservations) Page**
+
 <img width="1920" height="907" alt="image" src="https://github.com/user-attachments/assets/4cccbdcc-d642-489a-9471-677c7f6de880" />
 
+
 **Cinemas Page**
+
 <img width="1920" height="906" alt="image" src="https://github.com/user-attachments/assets/9e469494-d073-4e7e-b8f9-2dcf96be2b30" />
 
+
 **Movies in a Specific Cinema Page**
+
 <img width="1920" height="911" alt="image" src="https://github.com/user-attachments/assets/6f84c782-d3bb-4431-9af7-750ac72d03ee" />
 
+
 **Movie Details & Screening Selection Page**
+
 <img width="1920" height="904" alt="image" src="https://github.com/user-attachments/assets/3a56b9b3-fee1-4609-9733-dfbdfc38be79" />
 <img width="1920" height="899" alt="image" src="https://github.com/user-attachments/assets/9b3d3df9-af5b-45a0-a76c-51906ee27685" />
 
+
 **Cinemas & Screenings for a Specific Movie**
+
 <img width="1920" height="899" alt="image" src="https://github.com/user-attachments/assets/2c9eac50-88d3-4765-b366-6ffcf79c00dc" />
 
+
 **Seat Selection Page**
+
 <img width="1920" height="906" alt="image" src="https://github.com/user-attachments/assets/50ce59aa-bfee-45c1-9a3b-191181d5b15e" />
 
+
 **Reservation Confirmation & Payment Page**
+
 <img width="1899" height="909" alt="image" src="https://github.com/user-attachments/assets/90dc688f-3354-468e-995e-6ddedb9a76f5" />
 <img width="1920" height="897" alt="image" src="https://github.com/user-attachments/assets/886b2f95-d511-4f9a-8901-bb67136bdbe4" />
 
+
 **Reservation Cancellation Page**
+
 <img width="1920" height="897" alt="image" src="https://github.com/user-attachments/assets/e79d5b2c-8e1d-4f7b-8f88-038ddcff903a" />
 
+
 **Admin Pages**
+
 <img width="1920" height="904" alt="image" src="https://github.com/user-attachments/assets/28038646-8351-4c4f-a805-4b42bb9b8816" />
 <img width="1920" height="897" alt="image" src="https://github.com/user-attachments/assets/0d229e2a-8e8b-4ba1-9756-b33062ef366d" />
 <img width="1920" height="900" alt="image" src="https://github.com/user-attachments/assets/df585259-c44b-4165-b678-220febd10932" />
 <img width="1920" height="904" alt="image" src="https://github.com/user-attachments/assets/fbdea473-43b7-4792-9dca-720f06e2117b" />
 <img width="1920" height="901" alt="image" src="https://github.com/user-attachments/assets/b93a4bec-ed39-4068-98c4-a89c2d1323a8" />
 <img width="1920" height="891" alt="image" src="https://github.com/user-attachments/assets/2106dd71-e753-44ee-8678-a19843874c7e" />
+
 
 ## 🚀 Installation & Setup
 
