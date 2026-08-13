@@ -71,7 +71,7 @@ To run this project locally, follow these steps:
 
 **1. Clone the repository:**
 ```bash
-git clone [https://github.com/YourUsername/cinema-sharif.git](https://github.com/YourUsername/cinema-sharif.git)
+git clone https://github.com/alif2884/-Cinema-Sharif-Reservation-System.git
 cd cinema-sharif
 ```
 
